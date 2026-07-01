@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Price Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+   
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+main {
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.description {
+    text-align: center;
+}
+
+.form-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #3e8e41;
+}
+
+.disclaimer {
+    font-size: 0
+}
+.Prediction{
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+}
+</style>
+<body>
+    <header>
+        <h1>Laptop Price Prediction</h1>
+    </header>
+    <main>
+        <section class="description">
+            <h2>Welcome to the Laptop Price Prediction Tool!</h2>
+            <p>This website helps you estimate the value of laptop based on various factors.</p>
+        </section>
+        <section class="form-container">
+            <h3>Enter Laptop Details</h3>
+<form action="{{ url_for('predict') }}" method="post">
+            
+                <label for="brand">Brand:</label>
+<select name="brand" required>
+
+    <option value="2">Acer</option>
+    <option value="4">Apple</option>
+    <option value="6">Asus</option>
+    <option value="19">Avita</option>
+    <option value="30">AXL</option>
+    <option value="17">Chuwi</option>
+    <option value="5">Dell</option>
+    <option value="26">Fujitsu</option>
+    <option value="23">Gigabyte</option>
+    <option value="13">Honor</option>
+    <option value="1">HP</option>
+    <option value="21">Huawei</option>
+    <option value="16">iBall</option>
+    <option value="11">Infinix</option>
+    <option value="3">Lenovo</option>
+    <option value="27">LG</option>
+    <option value="25">Microsoft</option>
+    <option value="10">MSI</option>
+    <option value="28">Ninkear</option>
+    <option value="9">Primebook</option>
+    <option value="29">Razer</option>
+    <option value="18">Realme</option>
+    <option value="7">Samsung</option>
+    <option value="22">Tecno</option>
+    <option value="8">Ultimus</option>
+    <option value="24">Vaio</option>
+    <option value="20">Walker</option>
+    <option value="12">Wings</option>
+    <option value="15">Xiaomi</option>
+    <option value="14">Zebronics</option>
+
+
+    <label for="processor-select">Choose a Processor:</label>
+<select id="processor-select" name="processor">
+    <option value="" disabled selected>-- Choose a processor --</option>
+    <option value="10th Gen Intel Core i3">10th Gen Intel Core i3</option>
+    <option value="10th Gen Intel Core i3 1005G1">10th Gen Intel Core i3 1005G1</option>
+    <option value="10th Gen Intel Core i3 10110U">10th Gen Intel Core i3 10110U</option>
+    <option value="10th Gen Intel Core i5 10210U">10th Gen Intel Core i5 10210U</option>
+    <option value="10th Gen Intel Core i5 10300H">10th Gen Intel Core i5 10300H</option>
+    <option value="10th Gen Intel Core i5 10310U">10th Gen Intel Core i5 10310U</option>
+    <option value="10th Gen Intel Core i5 1035G1">10th Gen Intel Core i5 1035G1</option>
+    <option value="10th Gen Intel Core i5 1035G4">10th Gen Intel Core i5 1035G4</option>
+    <option value="10th Gen Intel Core i7">10th Gen Intel Core i7</option>
+    <option value="10th Gen Intel Core i7 10750H">10th Gen Intel Core i7 10750H</option>
+    <option value="10th Gen Intel Core i7 10870H">10th Gen Intel Core i7 10870H</option>
+    <option value="11th Gen Intel Celeron N5100">11th Gen Intel Celeron N5100</option>
+    <option value="11th Gen Intel Core i3  1115G4">11th Gen Intel Core i3  1115G4</option>
+    <option value="11th Gen Intel Core i3 1115G4">11th Gen Intel Core i3 1115G4</option>
+    <option value="11th Gen Intel Core i3 1125G4">11th Gen Intel Core i3 1125G4</option>
+    <option value="11th Gen Intel Core i5  1135G7">11th Gen Intel Core i5  1135G7</option>
+    <option value="11th Gen Intel Core i5 11260H">11th Gen Intel Core i5 11260H</option>
+    <option value="11th Gen Intel Core i5 11300H">11th Gen Intel Core i5 11300H</option>
+    <option value="11th Gen Intel Core i5 11320H">11th Gen Intel Core i5 11320H</option>
+    <option value="11th Gen Intel Core i5 1135G7">11th Gen Intel Core i5 1135G7</option>
+    <option value="11th Gen Intel Core i5 11400H">11th Gen Intel Core i5 11400H</option>
+    <option value="11th Gen Intel Core i5 1155G7">11th Gen Intel Core i5 1155G7</option>
+    <option value="11th Gen Intel Core i7 1165G7">11th Gen Intel Core i7 1165G7</option>
+    <option value="11th Gen Intel Core i7 11800H">11th Gen Intel Core i7 11800H</option>
+    <option value="11th Gen Intel Core i7 1185G7">11th Gen Intel Core i7 1185G7</option>
+    <option value="11th Gen Intel Core i7 1195G7">11th Gen Intel Core i7 1195G7</option>
+    <option value="11th Gen intel Core i3 1115G4">11th Gen intel Core i3 1115G4</option>
+    <option value="12th Gen Intel Core i3 1215U">12th Gen Intel Core i3 1215U</option>
+    <option value="12th Gen Intel Core i3 1220P">12th Gen Intel Core i3 1220P</option>
+    <option value="12th Gen Intel Core i5 1230U">12th Gen Intel Core i5 1230U</option>
+    <option value="12th Gen Intel Core i5 1235U">12th Gen Intel Core i5 1235U</option>
+    <option value="12th Gen Intel Core i5 1240P">12th Gen Intel Core i5 1240P</option>
+    <option value="12th Gen Intel Core i5 12450H">12th Gen Intel Core i5 12450H</option>
+    <option value="12th Gen Intel Core i5 12500H">12th Gen Intel Core i5 12500H</option>
+    <option value="12th Gen Intel Core i7 1250U">12th Gen Intel Core i7 1250U</option>
+    <option value="12th Gen Intel Core i7 1255U">12th Gen Intel Core i7 1255U</option>
+    <option value="12th Gen Intel Core i7 1260P">12th Gen Intel Core i7 1260P</option>
+    <option value="12th Gen Intel Core i7 12650H">12th Gen Intel Core i7 12650H</option>
+    <option value="12th Gen Intel Core i7 1265U">12th Gen Intel Core i7 1265U</option>
+    <option value="12th Gen Intel Core i7 12700H">12th Gen Intel Core i7 12700H</option>
+    <option value="12th Gen Intel Core i9 12900H">12th Gen Intel Core i9 12900H</option>
+    <option value="13th Gen Intel 7 13700HX">13th Gen Intel 7 13700HX</option>
+    <option value="13th Gen Intel Core i3 1305U">13th Gen Intel Core i3 1305U</option>
+    <option value="13th Gen Intel Core i3 1315U">13th Gen Intel Core i3 1315U</option>
+    <option value="13th Gen Intel Core i5 1334U">13th Gen Intel Core i5 1334U</option>
+    <option value="13th Gen Intel Core i5 1335U">13th Gen Intel Core i5 1335U</option>
+    <option value="13th Gen Intel Core i5 1340P">13th Gen Intel Core i5 1340P</option>
+    <option value="13th Gen Intel Core i5 1340p">13th Gen Intel Core i5 1340p</option>
+    <option value="13th Gen Intel Core i5 13420H">13th Gen Intel Core i5 13420H</option>
+    <option value="13th Gen Intel Core i5 13450HX">13th Gen Intel Core i5 13450HX</option>
+    <option value="13th Gen Intel Core i5 13500H">13th Gen Intel Core i5 13500H</option>
+    <option value="13th Gen Intel Core i5 13500HX">13th Gen Intel Core i5 13500HX</option>
+    <option value="13th Gen Intel Core i7 1355U">13th Gen Intel Core i7 1355U</option>
+    <option value="13th Gen Intel Core i7 1360P">13th Gen Intel Core i7 1360P</option>
+    <option value="13th Gen Intel Core i7 1360p">13th Gen Intel Core i7 1360p</option>
+    <option value="13th Gen Intel Core i7 13620H">13th Gen Intel Core i7 13620H</option>
+    <option value="13th Gen Intel Core i7 13650HX">13th Gen Intel Core i7 13650HX</option>
+    <option value="13th Gen Intel Core i7 1365U">13th Gen Intel Core i7 1365U</option>
+    <option value="13th Gen Intel Core i7 13700H">13th Gen Intel Core i7 13700H</option>
+    <option value="13th Gen Intel Core i7 13700HX">13th Gen Intel Core i7 13700HX</option>
+    <option value="13th Gen Intel Core i9 13900H">13th Gen Intel Core i9 13900H</option>
+    <option value="13th Gen Intel Core i9 13900HX">13th Gen Intel Core i9 13900HX</option>
+    <option value="13th Gen Intel Core i9 13950HX">13th Gen Intel Core i9 13950HX</option>
+    <option value="13th Gen Intel Core i9 13980HX">13th Gen Intel Core i9 13980HX</option>
+    <option value="13th Gen &lrm;Intel Core i3 1315U">13th Gen &lrm;Intel Core i3 1315U</option>
+    <option value="13th Gen &lrm;Intel Core i5 1335U">13th Gen &lrm;Intel Core i5 1335U</option>
+    <option value="3rd Gen AMD Athlon  3050U">3rd Gen AMD Athlon  3050U</option>
+    <option value="3rd Gen AMD Athlon 3050U">3rd Gen AMD Athlon 3050U</option>
+    <option value="3rd Gen AMD Athlon Silver 3050U">3rd Gen AMD Athlon Silver 3050U</option>
+    <option value="3rd Gen AMD Ryzen 3  3250U">3rd Gen AMD Ryzen 3  3250U</option>
+    <option value="3rd Gen AMD Ryzen 5  3500U">3rd Gen AMD Ryzen 5  3500U</option>
+    <option value="3rd Gen AMD Ryzen 5  3580U">3rd Gen AMD Ryzen 5  3580U</option>
+    <option value="3rd Gen AMD Ryzen 5 3500U">3rd Gen AMD Ryzen 5 3500U</option>
+    <option value="4th Gen AMD Ryzen 7 PRO 4750U">4th Gen AMD Ryzen 7 PRO 4750U</option>
+    <option value="4th Gen Intel Celeron N4020">4th Gen Intel Celeron N4020</option>
+    <option value="5th Gen AMD Ryzen 3  5300U">5th Gen AMD Ryzen 3  5300U</option>
+    <option value="5th Gen AMD Ryzen 3  5425U">5th Gen AMD Ryzen 3  5425U</option>
+    <option value="5th Gen AMD Ryzen 3 5300U">5th Gen AMD Ryzen 3 5300U</option>
+    <option value="5th Gen AMD Ryzen 3 5425U">5th Gen AMD Ryzen 3 5425U</option>
+    <option value="5th Gen AMD Ryzen 5  5500H">5th Gen AMD Ryzen 5  5500H</option>
+    <option value="5th Gen AMD Ryzen 5  5500U">5th Gen AMD Ryzen 5  5500U</option>
+    <option value="5th Gen AMD Ryzen 5  5500u">5th Gen AMD Ryzen 5  5500u</option>
+    <option value="5th Gen AMD Ryzen 5  5600H">5th Gen AMD Ryzen 5  5600H</option>
+    <option value="5th Gen AMD Ryzen 5  5625U">5th Gen AMD Ryzen 5  5625U</option>
+    <option value="5th Gen AMD Ryzen 5 5500H">5th Gen AMD Ryzen 5 5500H</option>
+    <option value="5th Gen AMD Ryzen 5 5500U">5th Gen AMD Ryzen 5 5500U</option>
+    <option value="5th Gen AMD Ryzen 5 5600H">5th Gen AMD Ryzen 5 5600H</option>
+    <option value="5th Gen AMD Ryzen 5 5600HS">5th Gen AMD Ryzen 5 5600HS</option>
+    <option value="5th Gen AMD Ryzen 5 5625U">5th Gen AMD Ryzen 5 5625U</option>
+    <option value="5th Gen AMD Ryzen 7   5700U">5th Gen AMD Ryzen 7   5700U</option>
+    <option value="5th Gen AMD Ryzen 7  5700U">5th Gen AMD Ryzen 7  5700U</option>
+    <option value="5th Gen AMD Ryzen 7  5800H">5th Gen AMD Ryzen 7  5800H</option>
+    <option value="5th Gen AMD Ryzen 7  5825U">5th Gen AMD Ryzen 7  5825U</option>
+    <option value="5th Gen AMD Ryzen 7 5700U">5th Gen AMD Ryzen 7 5700U</option>
+    <option value="5th Gen AMD Ryzen 7 5800H">5th Gen AMD Ryzen 7 5800H</option>
+    <option value="5th Gen AMD Ryzen 7 5800HS">5th Gen AMD Ryzen 7 5800HS</option>
+    <option value="5th Gen AMD Ryzen 7 5800U">5th Gen AMD Ryzen 7 5800U</option>
+    <option value="5th Gen AMD Ryzen 7 5825U">5th Gen AMD Ryzen 7 5825U</option>
+    <option value="6th Gen AMD Ryzen 5 6600H">6th Gen AMD Ryzen 5 6600H</option>
+    <option value="6th Gen AMD Ryzen 7  6800H">6th Gen AMD Ryzen 7  6800H</option>
+    <option value="6th Gen AMD Ryzen 7  7735HS">6th Gen AMD Ryzen 7  7735HS</option>
+    <option value="6th Gen AMD Ryzen 7 6800H">6th Gen AMD Ryzen 7 6800H</option>
+    <option value="6th Gen AMD Ryzen 7 6800HS">6th Gen AMD Ryzen 7 6800HS</option>
+    <option value="6th Gen AMD Ryzen 9  6900HX">6th Gen AMD Ryzen 9  6900HX</option>
+    <option value="7th Gen AMD Ryzen 3 7320U">7th Gen AMD Ryzen 3 7320U</option>
+    <option value="7th Gen AMD Ryzen 3 7330U">7th Gen AMD Ryzen 3 7330U</option>
+    <option value="7th Gen AMD Ryzen 5  7530U">7th Gen AMD Ryzen 5  7530U</option>
+    <option value="7th Gen AMD Ryzen 5 7520U">7th Gen AMD Ryzen 5 7520U</option>
+    <option value="7th Gen AMD Ryzen 5 7530U">7th Gen AMD Ryzen 5 7530U</option>
+    <option value="7th Gen AMD Ryzen 5 7535HS">7th Gen AMD Ryzen 5 7535HS</option>
+    <option value="7th Gen AMD Ryzen 7  7730U">7th Gen AMD Ryzen 7  7730U</option>
+    <option value="7th Gen AMD Ryzen 7  7735HS">7th Gen AMD Ryzen 7  7735HS</option>
+    <option value="7th Gen AMD Ryzen 7 7730U">7th Gen AMD Ryzen 7 7730U</option>
+    <option value="7th Gen AMD Ryzen 7 7735HS">7th Gen AMD Ryzen 7 7735HS</option>
+    <option value="7th Gen AMD Ryzen 7 7735U">7th Gen AMD Ryzen 7 7735U</option>
+    <option value="7th Gen AMD Ryzen 7 7745HX">7th Gen AMD Ryzen 7 7745HX</option>
+    <option value="7th Gen AMD Ryzen 7 7840HS">7th Gen AMD Ryzen 7 7840HS</option>
+    <option value="7th Gen AMD Ryzen 7040 Series 040">7th Gen AMD Ryzen 7040 Series 040</option>
+    <option value="7th Gen AMD Ryzen 9  7940HS">7th Gen AMD Ryzen 9  7940HS</option>
+    <option value="7th Gen AMD Ryzen 9  7945HX">7th Gen AMD Ryzen 9  7945HX</option>
+    <option value="7th Gen AMD Ryzen 9 7940HS">7th Gen AMD Ryzen 9 7940HS</option>
+    <option value="7th Gen Amd Ryzen 5 7520U">7th Gen Amd Ryzen 5 7520U</option>
+    <option value="7th Gen Amd Ryzen 5 7530U">7th Gen Amd Ryzen 5 7530U</option>
+    <option value="7th Gen Amd Ryzen 5 7535HS">7th Gen Amd Ryzen 5 7535HS</option>
+    <option value="7th Gen Amd Ryzen 7 7745HX">7th Gen Amd Ryzen 7 7745HX</option>
+    <option value="7th Gen Amd Ryzen 7 7840H">7th Gen Amd Ryzen 7 7840H</option>
+    <option value="7th Gen Amd Ryzen 9 7940HS">7th Gen Amd Ryzen 9 7940HS</option>
+    <option value="8th Gen Intel Core i5 8250U">8th Gen Intel Core i5 8250U</option>
+    <option value="8th Gen Intel Core i5 8265U">8th Gen Intel Core i5 8265U</option>
+    <option value="8th Gen Intel Core i7 8550U">8th Gen Intel Core i7 8550U</option>
+    <option value="8th Gen Intel Core i9 8950HK">8th Gen Intel Core i9 8950HK</option>
+    <option value="9th Gen Intel Core i9">9th Gen Intel Core i9</option>
+    <option value="9th Gen intel Core i7 9750H">9th Gen intel Core i7 9750H</option>
+    <option value="AMD Athlon 7120U">AMD Athlon 7120U</option>
+    <option value="AMD Athlon Pro 3045B">AMD Athlon Pro 3045B</option>
+    <option value="AMD Athlon Silver 7120U">AMD Athlon Silver 7120U</option>
+    <option value="AMD Ryzen 3 7320U">AMD Ryzen 3 7320U</option>
+    <option value="Apple M1">Apple M1</option>
+    <option value="Apple M1 Apple M1 Chip">Apple M1 Apple M1 Chip</option>
+    <option value="Apple M1 Max M1 Max">Apple M1 Max M1 Max</option>
+    <option value="Apple M1 Pro M1 Pro">Apple M1 Pro M1 Pro</option>
+    <option value="Apple M2">Apple M2</option>
+    <option value="Apple M2 Apple M2 Chip">Apple M2 Apple M2 Chip</option>
+    <option value="Apple M2 Max M2 Max">Apple M2 Max M2 Max</option>
+    <option value="Apple M2 Pro M2 Pro">Apple M2 Pro M2 Pro</option>
+    <option value="Intel">Intel</option>
+    <option value="Intel   N4500">Intel   N4500</option>
+    <option value="Intel Atom Quad Core Z3735F">Intel Atom Quad Core Z3735F</option>
+    <option value="Intel Celeron  N4020">Intel Celeron  N4020</option>
+    <option value="Intel Celeron  N4500">Intel Celeron  N4500</option>
+    <option value="Intel Celeron Dual Core N4500">Intel Celeron Dual Core N4500</option>
+    <option value="Intel Celeron N4020">Intel Celeron N4020</option>
+    <option value="Intel Celeron N4500">Intel Celeron N4500</option>
+    <option value="Intel Core i3 N305">Intel Core i3 N305</option>
+    <option value="Intel Core i7">Intel Core i7</option>
+    <option value="Intel Pentium Silver   N6000">Intel Pentium Silver   N6000</option>
+    <option value="Intel Pentium Silver  N6000">Intel Pentium Silver  N6000</option>
+    <option value="Intel Pentium Silver N6000">Intel Pentium Silver N6000</option>
+    <option value="MediaTek MTK8788">MediaTek MTK8788</option>
+    <option value="intel Celeron  N4020">intel Celeron  N4020</option>
+</select>
+
+    <label for="CPU">CPU:</label>
+    <select name="CPU" required>
+    <option value="26">10 Cores</option>
+    <option value="23">10 Cores, 12 Threads</option>
+    <option value="6">10 Cores (2P + 8E), 12 Threads</option>
+    <option value="14">10 Cores (6P + 4E), 16 Threads</option>    
+    <option value="25">10 Cores (8P + 2E)</option>
+    <option value="22">12 Cores</option>
+    <option value="3">12 Cores (4P + 8E), 16 Threads</option>
+    <option value="21">14 Cores (6P + 8E)</option>
+    <option value="10">14 Cores (6P + 8E), 20 Threads</option>
+    <option value="15">14 Cores, 20 Threads</option>
+    <option value="19">16 Cores (8P + 8E), 24 Threads</option>
+    <option value="20">16 Cores, 32 Threads</option>
+    <option value="28">20 Threads</option>
+    <option value="27">24 Cores (8P + 16E)</option>
+    <option value="13">24 Cores (8P + 16E), 32 Threads</option>
+    <option value="18">5 Cores (1P + 4E), 6 Threads</option>
+    <option value="7">Dual Core, 2 Threads</option>
+    <option value="2">Dual Core,4 Threads</option>
+    <option value="0">Hexa Core, 12 Threads</option>
+    <option value="1">Hexa Core (2P + 4E), 8 Threads</option>
+    <option value="8">Octa Core</option>
+    <option value="12">Octa Core, 8 Threads</option>
+    <option value="24">Octa Core, 12 Threads</option>  
+    <option value="11">Octa Core, 16 Threads</option>
+    <option value="4">Octa Core (4P + 4E)</option>
+    <option value="5">Octa Core (4P + 4E), 12 Threads</option> 
+    <option value="17">Quad Core</option>
+    <option value="16">Quad Core, 4 Threads</option>
+    <option value="9">Quad Core, 8 Threads</option>
+</select><br><br>
+
+            
+                
+    <label for ='Ram'> Ram:</label>
+<select name="Ram" required>
+    <option value="2GB">2 GB - Basic</option>
+    <option value="4GB">4 GB - Entry Level</option>
+    <option value="8GB">8 GB - Standard</option>
+    <option value="12GB">12 GB - Enhanced</option>
+    <option value="16GB">16 GB - Power User</option>
+    <option value="32GB">32 GB - Professional</option>
+    <option value="64GB">64 GB - Workstation</option>
+</select>
+                
+    <br><br>
+    <label>Storage Capacity</label>
+    <select name="ROM" required>
+
+    <option value="32GB">32 GB - Basic Storage</option>
+    <option value="64GB">64 GB - Entry Level</option>
+    <option value="128GB">128 GB - Standard</option>
+    <option value="256GB">256 GB - Fast SSD</option>
+    <option value="512GB">512 GB - High Performance SSD</option>
+    <option value="1TB">1 TB - Professional Storage</option>
+    <option value="2TB">2 TB - Workstation Grade</option>
+
+</select>
+<br><br>
+
+
+    
+    <label>GPU</label>
+    <select name="gpu" required>
+    <option value="" disabled selected>Choose GPU</option>
+    
+    <!-- Yeh loop automatically saare 134 options bana dega -->
+    {% for gpu in sorted_gpus %}
+        <option value="{{ gpu_mapping[gpu] }}">{{ gpu }}</option>
+    {% endfor %}
+</select>
+        
+
+
+    label>Display Size</label>
+    <select name="display_size" required>
+
+    <option value="11.6">11.6" - Compact</option>
+
+    <option value="13.3">13.3" - Ultrabook</option>
+    <option value="13.4">13.4" - Ultrabook</option>
+    <option value="13.5">13.5" - Ultrabook</option>
+    <option value="13.6">13.6" - Ultrabook</option>
+
+    <option value="14.0">14.0" - Portable</option>
+    <option value="14.1">14.1" - Portable</option>
+    <option value="14.2">14.2" - Portable</option>
+
+    <option value="15.0">15.0" - Standard</option>
+    <option value="15.3">15.3" - Standard</option>
+    <option value="15.56">15.56" - Standard</option>
+    <option value="15.6">15.6" - Standard</option>
+
+    <option value="16.0">16.0" - Productivity</option>
+    <option value="16.1">16.1" - Productivity</option>
+    <option value="16.2">16.2" - Productivity</option>
+
+    <option value="17.0">17.0" - Gaming</option>
+    <option value="17.3">17.3" - Gaming</option>
+
+    <option value="18.0">18.0" - Desktop Replacement</option>
+
+</select>
+                <br><br>
+                
+    <label>Operating System</label>
+    <select name="OS" required>
+    <option value="3">Android 11 OS</option>
+    <option value="7">Chrome OS</option>
+    <option value="4">DOS OS</option>
+    <option value="11">DOS 3.0 OS</option>
+    <option value="2">Mac OS</option>
+    <option value="10">Mac Catalina OS</option>
+    <option value="13">Mac High Sierra OS</option>
+    <option value="14">Mac 10.15.3 OS</option>
+    <option value="9">Ubuntu OS</option>
+    <option value="8">Windows OS</option>
+    <option value="5">Windows 10 OS</option>
+    <option value="1">Windows 11 OS</option>
+</select><br><br>
+
+<label>Warranty Coverage</label>
+<select name="warranty" required>
+
+    <option value="0">No Coverage</option>
+
+    <option value="1">Standard (1 Year)</option>
+
+    <option value="2">Extended (2 Years)</option>
+
+    <option value="3">Premium (3 Years)</option>
+
+</select><br><br>
+
+<br><br>
+                <button type="submit">Predict Price</button>
+            </form>
+            <!-- <p class="disclaimer">**Disclaimer:** This is a basic website for demonstration purposes only. A real prediction model would require additional features and machine learning integration.</p>
+        </section> -->
+        <!-- <section class="results">
+            <h2>Predicted Price</h2>
+            <p id="predicted-price">**This is where the predicted price will be displayed.**</p>
+        </section> -->
+    </main>
+    <div class="Prediction">
+    <h2>Laptop Price is : {{ prediction }}</h2>
+</div>
+    <footer>
+        <!-- <p>&copy;2024 Bike Price Prediction</p> -->
+    </footer>
+</body>
+</html>

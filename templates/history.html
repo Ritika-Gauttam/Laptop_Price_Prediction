@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Laptop Price Predictor</title>
+    <!-- Fixed Bootstrap 5 CSS Link -->
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+
+<!-- Navigation Bar (Consistent with other pages) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Laptop Predictor</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item active"><a class="nav-link active" href="/history">History</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Historical Price Predictions</h1>
+
+    <!-- 
+      Expected data structure mapping example from your database/list:
+      (id, brand, processor, cpu, ram, rom, gpu, display_size, os, warranty, predicted_price) 
+    -->
+    <div class="table-responsive shadow-sm bg-white rounded">
+        <table class="table table-striped table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Brand</th>
+                    <th>Processor</th>
+                    <th>CPU Details</th>
+                    <th>RAM</th>
+                    <th>Storage (ROM)</th>
+                    <th>GPU</th>
+                    <th>Display</th>
+                    <th>OS</th>
+                    <th>Warranty</th>
+                    <th>Predicted Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prediction in historical_data %}
+                <tr>
+                    <td>{{ prediction[1] }}</td> <!-- Brand -->
+                    <td>{{ prediction[2] }}</td> <!-- Processor -->
+                    <td>{{ prediction[3] }}</td> <!-- CPU -->
+                    <td>{{ prediction[4] }} GB</td> <!-- RAM -->
+                    <td>{{ prediction[5] }} GB</td> <!-- ROM -->
+                    <td>{{ prediction[6] }}</td> <!-- GPU -->
+                    <td>{{ prediction[7] }}"</td> <!-- Display Size -->
+                    <td>{{ prediction[8] }}</td> <!-- OS -->
+                    <td>{{ prediction[9] }} Years</td> <!-- Warranty -->
+                    
+                    <!-- Colorized Label for Predicted Price -->
+                    <td>
+                        <span class="badge bg-primary fs-6">₹ {{ prediction[10] }}</span>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="10" class="text-center text-muted py-4">No prediction history found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
